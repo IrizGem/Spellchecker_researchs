@@ -1,3 +1,4 @@
+import os
 from tqdm import tqdm
 from tqdm import trange
 import my_metamorphs
@@ -5,8 +6,8 @@ import with_enchant
 import with_jamspell
 import with_textblob
 
-path = '/home/iris/Repos/venviroments/orphograpy_reasearch/data/dicts/russian_all_dict.csv'
-df_test = my_metamorphs.generate_spoiled_data(my_metamorphs.poor_file_reader(path, edge=50000),
+path_to_dict = os.path.join(os.path.normpath(os.environ['PATH'].split(':')[0] + os.sep + os.pardir),  'data', 'dicts', 'russian_all_dict.csv')
+df_test = my_metamorphs.generate_spoiled_data(my_metamorphs.poor_file_reader(path_to_dict, edge=50000),
                                               num_substitution=1,
                                               morph_list=[[0], [1], [2], [0, 1, 2]])
 print(df_test)

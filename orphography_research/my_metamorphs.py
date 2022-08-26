@@ -22,7 +22,7 @@ def commit_metamorph(word, k):  # функция для искажения бу�
 def poor_file_reader(filename, has_count_col=True, has_header=False, sep=' ', edge=20000):
     df_data = pd.DataFrame()
     if not os.path.isfile(filename):
-        print('Wrong path')
+        print('Wrong path_to_dicts')
         return df_data
     if os.path.splitext(filename)[1] == '.csv':
         if has_count_col and not has_header:
@@ -91,6 +91,7 @@ def generate_spoiled_data(df_data,
 
 
 if __name__ == '__main__':
-    path = '/home/iris/Repos/venviroments/orphograpy_reasearch/data/dicts/russian_all_dict.csv'
-    df = generate_spoiled_data(poor_file_reader(path), morph_list=[[0], [1], [2], [0, 1], [1, 2], [0, 2], [0, 1, 2]])
+    path_to_dict = os.path.join(os.path.normpath(os.environ['PATH'].split(':')[0] + os.sep + os.pardir),
+                                'data', 'dicts', 'russian_all_dict.csv')
+    df = generate_spoiled_data(poor_file_reader(path_to_dict), morph_list=[[0], [1], [2], [0, 1], [1, 2], [0, 2], [0, 1, 2]])
     print(df)

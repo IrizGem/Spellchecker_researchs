@@ -1,7 +1,9 @@
+import os
 import jamspell
 
+path = ''  # set path_to_dicts if it's nessesary
 g_corrector = jamspell.TSpellCorrector()
-g_corrector.LoadLangModel('ru_small.bin')  # 'en.bin')
+g_corrector.LoadLangModel(os.path.join(path, 'ru_small.bin'))
 
 
 def clear_text(text):

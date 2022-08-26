@@ -1,6 +1,11 @@
+import os
 from textblob.en import Spelling
 from rapidfuzz import fuzz
-spelling = Spelling('/home/iris/Repos/venviroments/orphograpy_reasearch/data/dicts/freq_dict/plain_dict.txt')
+
+path_to_dict = os.path.join(os.path.normpath(os.environ['PATH'].split(':')[0] + os.sep + os.pardir),  'data', 'dicts', 'freq_dict', 'plain_dict.txt')
+# print(path_to_dict)
+
+spelling = Spelling(path_to_dict)
 
 
 def __solver(word, suggestions):
